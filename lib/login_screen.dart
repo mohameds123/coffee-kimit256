@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'details_scren.dart';
+import 'home_screen.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -52,7 +53,7 @@ class LoginScreen extends StatelessWidget {
                 ),
                 InkWell(
                   onTap: (){
-                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>DetailsScren()));
+                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>HomeScreen()));
                   },
                   child: Container(
                     width: 317,
