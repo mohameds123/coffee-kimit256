@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  List <String> coffeeType = ["Cappuccino", "Machiato", "Latte", "American Coffee"];
+  int selectedItem = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,7 +23,7 @@ class HomeScreen extends StatelessWidget {
                 height: 270,
                 color: Color.fromRGBO(43, 43, 43, 1),
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 28,horizontal: 12),
+                  padding: const EdgeInsets.symmetric(vertical: 32,horizontal: 12),
                   child: Column(
                     children: [
                       Row(
@@ -104,10 +111,59 @@ class HomeScreen extends StatelessWidget {
               ),
               Container(
                 width: double.infinity,
+
                 color: Colors.white,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 90.0,horizontal: 12),
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: 38,
+                        child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                            itemBuilder: (context, index){
+                            bool isSelected = selectedItem == index;
+                              return Padding(
+                                padding: const EdgeInsets.symmetric(horizontal: 2.0),
+                                child: InkWell(
+                                  onTap: (){
+                                    selectedItem = index;
+                                    setState(() {
+
+                                    });
+                                  },
+                                  child: Container(
+                                    width: 121,
+                                    height: 38,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(12),
+                                      color: isSelected ? Color.fromRGBO(198, 124, 78, 1) : Colors.grey.shade400,
+                                    ),
+                                    child: Center(
+                                      child: Text(coffeeType[index],style: TextStyle(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w400,color: Colors.white
+                                      ),),
+                                    ),
+                                  ),
+                                ),
+                              );
+                            },
+                          itemCount: coffeeType.length,
+                        ),
+                      )
+                    ],
+                  ),
+                ),
               ),
             ],
           ),
+          //layer 2
+          Positioned(
+              top: 210,
+              left: 23,
+
+              child: Image.asset("assets/images/panner.png"))
         ],
       ) ,
     );
