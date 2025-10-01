@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kimit256/details_scren.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -8,6 +9,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  bool isLoading = true;
+
   List<String> coffeeType = [
     "Cappuccino",
     "Machiato",
@@ -184,56 +187,61 @@ class _HomeScreenState extends State<HomeScreen> {
                                     childAspectRatio: 0.7
                                   ),
                                   itemBuilder: (context, index){
-                                    return  Container(
-                                      height: 238,
-                                      width: 155,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(16),
+                                    return  InkWell(
+                                      onTap: (){
+                                        Navigator.push(context, MaterialPageRoute(builder: (context)=>DetailsScren()));
+                                      },
+                                      child: Container(
+                                        height: 238,
+                                        width: 155,
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(16),
 
-                                      ),
-                                      child: Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: [
-                                          Image.asset("assets/images/product_detail.png"),
-                                          Text("Cappucino",
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.w600,
-                                            fontSize: 16,
-                                            color: Colors.black
-                                          ),
-                                          ),
-                                          Text("with chocolate",
+                                        ),
+                                        child: Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            Image.asset("assets/images/product_detail.png"),
+                                            Text("Cappucino",
                                             style: TextStyle(
-                                                fontWeight: FontWeight.w400,
-                                                fontSize: 14,
-                                                color: Color.fromRGBO(155, 155, 155, 1)
+                                              fontWeight: FontWeight.w600,
+                                              fontSize: 16,
+                                              color: Colors.black
                                             ),
-                                          ),
-                                          Row(
-                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              Text("\$4.35",
-                                                style: TextStyle(
-                                                    fontWeight: FontWeight.w600,
-                                                    fontSize: 18,
-                                                    color: Colors.black
-                                                ),
+                                            ),
+                                            Text("with chocolate",
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.w400,
+                                                  fontSize: 14,
+                                                  color: Color.fromRGBO(155, 155, 155, 1)
                                               ),
-                                              Padding(
-                                                padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                                                child: Container(
-                                                  width: 32,
-                                                  height: 32,
-                                                  decoration: BoxDecoration(
-                                                    color: Color.fromRGBO(198, 124, 78, 1),
-                                                    borderRadius: BorderRadius.circular(10)
+                                            ),
+                                            Row(
+                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                              children: [
+                                                Text("\$4.35",
+                                                  style: TextStyle(
+                                                      fontWeight: FontWeight.w600,
+                                                      fontSize: 18,
+                                                      color: Colors.black
                                                   ),
-                                                  child: Icon(Icons.add,color: Colors.white,),
                                                 ),
-                                              )
-                                            ],
-                                          )
-                                        ],
+                                                Padding(
+                                                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                                                  child: Container(
+                                                    width: 32,
+                                                    height: 32,
+                                                    decoration: BoxDecoration(
+                                                      color: Color.fromRGBO(198, 124, 78, 1),
+                                                      borderRadius: BorderRadius.circular(10)
+                                                    ),
+                                                    child: Icon(Icons.add,color: Colors.white,),
+                                                  ),
+                                                )
+                                              ],
+                                            )
+                                          ],
+                                        ),
                                       ),
                                     );
                                   },

@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:rich_readmore/rich_readmore.dart';
 
 class DetailsScren extends StatefulWidget {
@@ -9,14 +12,26 @@ class DetailsScren extends StatefulWidget {
 }
 
 class _DetailsScrenState extends State<DetailsScren> {
+  bool isLoading = true;
   bool isFav = false;
   bool isM = false;
   bool isL = false;
   bool isS = true;
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    Timer(Duration(seconds: 2),(){
+      setState(() {
+        isLoading = false;
+      });
+
+    });
+  }
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
+      body:isLoading == true ? Lottie.asset("assets/animations/Loading animation blue.json"): Padding(
         padding: const EdgeInsets.symmetric(horizontal: 12.0),
         child: SingleChildScrollView(
           child: Column(

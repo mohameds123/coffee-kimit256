@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kimit256/login_screen.dart';
+import 'package:kimit256/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
 
 
-      home: LoginScreen(),
+      home: SplashScreen(),
 
     );
   }
