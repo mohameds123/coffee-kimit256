@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'details_scren.dart';
 import 'home_screen.dart';
@@ -52,7 +53,11 @@ class LoginScreen extends StatelessWidget {
                   height: 10,
                 ),
                 InkWell(
-                  onTap: (){
+                  onTap: ()async{
+                    final SharedPreferences prefs = await SharedPreferences.getInstance();
+                    await prefs.setBool("isLoggedIn", true);
+
+
                     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>HomeScreen()));
                   },
                   child: Container(
